@@ -10,7 +10,7 @@ const PROCEDURES = {
     content: [
       'La rinoplastia busca armonizar la nariz con el resto de la cara y mejorar la respiración cuando es necesario. Priorizamos técnicas de preservación que respetan los tejidos y acortan la recuperación.',
       'La intervención suele realizarse bajo anestesia general. Se utiliza una férula dorsal entre 7 y 10 días, con reincorporación progresiva a la vida social a partir de la segunda semana.'
-    ]
+    , '\nEn consulta resolvemos dudas, revisamos expectativas y te acompañamos en el postoperatorio con recomendaciones claras para una recuperación cómoda.']
   },
   'blefaroplastia': {
     title: 'Blefaroplastia (Foxy eyes)',
@@ -150,10 +150,12 @@ function ProcedurePage({ slug, onBack }) {
   if (!t) return <div className="max-w-3xl mx-auto px-4 py-16">Procedimiento no encontrado.</div>;
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-16">
+    <section className="mx-auto max-w-6xl px-4 py-16">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <div>
       <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← Volver</button>
-      <h1 className="mt-4 text-3xl font-semibold tracking-tight">{t.title}</h1>
-      <p className="mt-3 text-neutral-700">{t.description}</p>
+      <h1 className="mt-4 text-4xl font-semibold tracking-tight leading-tight">{t.title}</h1>
+      <p className="mt-4 text-neutral-700 text-lg">{t.description}</p>
       <div className="mt-6 prose prose-neutral max-w-none">
         {t.content.map((p, i) => <p key={i}>{p}</p>)}
       </div>
@@ -165,7 +167,13 @@ function ProcedurePage({ slug, onBack }) {
           Solicitar valoración
         </button>
       </div>
-    </section>
+    </div>
+    <div className="md:sticky md:top-20">
+      <img src={"/proc/" + slug + ".jpg"} alt={t.title} className="w-full rounded-2xl border shadow-sm object-cover" />
+      <p className="mt-3 text-xs text-neutral-500">Imagen orientativa. Sustituir por foto real del procedimiento.</p>
+    </div>
+  </div>
+</section>
   );
 }
 
@@ -186,6 +194,9 @@ function HomePage() {
     { title: 'Lifting de cejas', slug: 'lifting-cejas', description: 'Abre la mirada con cicatrices mínimas.' },
   ];
 
+  const [show, setShow] = React.useState(false);
+  React.useEffect(()=>{ const t = setTimeout(()=>setShow(true), 30); return ()=>clearTimeout(t); }, []);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* NAV */}
@@ -200,45 +211,49 @@ function HomePage() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">Resultados naturales, seguridad y cercanía en Granada y Málaga.</h1>
-        <p className="mt-4 text-neutral-700 max-w-2xl">
-          Cirugía plástica y estética centrada en ti. Información clara, técnica moderna y acompañamiento en todo el proceso.
-        </p>
-        <div className="mt-8 flex gap-3">
-          <button
-            className="rounded-2xl h-11 px-6 bg-[#0b1f3a] text-white hover:bg-[#0d274e]"
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Reserva online
-          </button>
-          <button
-            className="rounded-2xl h-11 px-6 text-[#0b1f3a] hover:bg-[#0b1f3a]/5"
-            onClick={() => document.getElementById('tratamientos')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Explorar tratamientos
-          </button>
+      {/* HERO mejorado */}
+      <section className={"mx-auto max-w-6xl px-4 py-16 transition-all duration-700 " + (show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2")}>
+        <div className="rounded-[28px] border bg-gradient-to-b from-[#f4f7fb] to-white p-8 md:p-12 shadow-sm">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
+            Resultados naturales, seguridad y cercanía en Granada y Málaga.
+          </h1>
+          <p className="mt-5 text-neutral-700 max-w-2xl text-lg">
+            Cirugía plástica y estética centrada en ti. Información clara, técnica moderna y acompañamiento durante todo el proceso.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <button
+              className="rounded-2xl h-11 px-6 bg-[#0b1f3a] text-white hover:bg-[#0d274e]"
+              onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Reserva online
+            </button>
+            <button
+              className="rounded-2xl h-11 px-6 border border-[#0b1f3a]/20 hover:bg-[#0b1f3a]/5"
+              onClick={() => document.getElementById('tratamientos')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Explorar tratamientos
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* TRATAMIENTOS */}
+      {/* TRATAMIENTOS con cards premium */}
       <section id="tratamientos" className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-semibold tracking-tight">Tratamientos</h2>
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {treatments.map(f => (
-            <article key={f.slug} className="border rounded-2xl p-5 hover:shadow-sm transition">
-              <h3 className="font-medium">{f.title}</h3>
+            <article key={f.slug} className="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="text-lg font-medium">{f.title}</h3>
               <p className="mt-2 text-sm text-neutral-700">{f.description}</p>
-              <div className="mt-4 flex gap-2">
+              <div className="mt-5 flex gap-2">
                 <button
-                  className="h-9 px-4 rounded-xl bg-[#0b1f3a] text-white"
+                  className="h-10 px-4 rounded-xl bg-[#0b1f3a] text-white hover:bg-[#0d274e]"
                   onClick={() => window.location.hash = '#/proc/' + f.slug}
                 >
                   Más información
                 </button>
                 <button
-                  className="h-9 px-4 rounded-xl border"
+                  className="h-10 px-4 rounded-xl border hover:bg-neutral-50"
                   onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Reservar
@@ -249,7 +264,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* EQUIPO (placeholder breve) */}
+      {/* EQUIPO */}
       <section id="equipo" className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="text-2xl font-semibold tracking-tight">Equipo</h2>
         <p className="mt-3 text-neutral-700 max-w-2xl">Equipo comprometido con resultados naturales, seguridad y trato cercano.</p>
@@ -292,6 +307,7 @@ function HomePage() {
     </div>
   );
 }
+
 
 /* ---------- Páginas legales ---------- */
 const LEGAL = {
