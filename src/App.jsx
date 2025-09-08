@@ -76,7 +76,8 @@ function FormBooking() {
         <label className="text-sm text-neutral-600">Tratamiento</label>
         <select name="tratamiento" value={form.tratamiento} onChange={onChange} className="mt-1 w-full h-11 rounded-xl border border-neutral-200 px-3 bg-white">
           <option>Rinoplastia</option>
-          <option>Blefaroplastia</option>
+          <option>Blefaroplastia (Foxy eyes)</option>
+          <option>Lifting de cejas</option>
           <option>Aumento mamario</option>
 <option>Mastopexia (con y sin prótesis)</option>
 <option>Reducción de mama</option>
@@ -98,199 +99,111 @@ function FormBooking() {
 }
 
 
-// --- Simple i18n ---
-const TEXTS = {
-  es: {
-    nav_tratamientos: "{TEXTS[lang].nav_tratamientos}",
-    nav_equipo: "{TEXTS[lang].nav_equipo}",
-    nav_contacto: "{TEXTS[lang].nav_contacto}",
-    hero_title: "Resultados naturales, seguridad y cercanía.",
-    hero_cta_primary: "Solicitar valoración",
-    hero_cta_secondary: "{TEXTS[lang].hero_cta_secondary}",
-    more_info: "Más información",
-    back: "Volver",
-    book_now: "Reservar",
-    reserve_online: "{TEXTS[lang].reserve_online}",
-  },
-  en: {
-    nav_tratamientos: "Treatments",
-    nav_equipo: "Team",
-    nav_contacto: "Contact",
-    hero_title: "Natural results, safety and care.",
-    hero_cta_primary: "Book consultation",
-    hero_cta_secondary: "Explore treatments",
-    more_info: "Learn more",
-    back: "Back",
-    book_now: "Book now",
-    reserve_online: "Book online",
-  }
-}
-
 // --- Procedures data ---
 const PROCEDURES = {
   'rinoplastia': {
-    es: {
-      title: 'Rinoplastia',
-      description: 'Respira mejor y mejora la armonía facial con técnicas de preservación.',
-      seoTitle: 'Rinoplastia en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Rinoplastia funcional y estética con enfoque natural. Consulta en Granada y Málaga.',
-      content: `Indicada para mejorar forma y función nasal. Empleamos técnicas de preservación y manejo septal para mantener estructuras y acortar la recuperación. Anestesia general. Postoperatorio con férula 7-10 días. Objetivo: una nariz armónica y respiración cómoda.`
-    },
-    en: {
-      title: 'Rhinoplasty',
-      description: 'Breathe better and refine facial harmony using preservation techniques.',
-      seoTitle: 'Rhinoplasty in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Functional and aesthetic rhinoplasty with a natural approach.',
-      content: `Aimed at improving nasal form and function. Preservation rhinoplasty maintains key structures for a smoother recovery. General anaesthesia. Splint for 7–10 days.`
-    }
+    title: 'Rinoplastia',
+    description: 'Mejora la forma y la función de la nariz con un enfoque conservador.',
+    seoTitle: 'Rinoplastia en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Rinoplastia funcional y estética con resultados naturales.',
+    content: [
+      `La rinoplastia busca armonizar la nariz con el resto de la cara y mejorar la respiración cuando es necesario. Priorizamos técnicas de preservación que respetan los tejidos y acortan la recuperación, con resultados estables y naturales.`,
+      `La intervención suele realizarse bajo anestesia general. Habitualmente se utiliza una férula dorsal entre 7 y 10 días, con reincorporación progresiva a la vida social a partir de la segunda semana.`
+    ]
   },
   'blefaroplastia': {
-    es: {
-      title: 'Blefaroplastia',
-      description: 'Párpados más descansados manteniendo tu expresión.',
-      seoTitle: 'Blefaroplastia en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Blefaroplastia superior e inferior con técnicas de preservación de grasa.',
-      content: `Corrige exceso de piel y bolsas palpebrales. Vía transconjuntival cuando procede para evitar cicatrices visibles. Anestesia local con sedación. Vuelta a la vida social en 7-10 días.`
-    },
-    en: {
-      title: 'Blepharoplasty',
-      description: 'Brighter, rested-looking eyes while keeping your expression.',
-      seoTitle: 'Blepharoplasty in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Upper and lower blepharoplasty with fat preservation.',
-      content: `Removes excess skin and treats fat pads. Transconjunctival approach when indicated to avoid external scars. Local anaesthesia with sedation.`
-    }
+    title: 'Blefaroplastia (incluye “foxy eyes” cuando está indicado)',
+    description: 'Rejuvenece la mirada manteniendo tu expresión.',
+    seoTitle: 'Blefaroplastia y Foxy Eyes en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Blefaroplastia superior e inferior; opción de foxy eyes según indicación.',
+    content: [
+      `La blefaroplastia corrige el exceso de piel y las bolsas de los párpados con cicatrices discretas. Cuando procede, puede combinarse con técnicas de tracción del canto y elevación de ceja externa para un efecto “foxy eyes” suave y armónico.`,
+      `Preferimos la preservación de grasa cuando es posible y la vía transconjuntival en párpado inferior para minimizar cicatrices. Suele realizarse con anestesia local y sedación, con recuperación social en 7–10 días.`
+    ]
   },
   'aumento-mamario': {
-    es: {
-      title: 'Aumento mamario',
-      description: 'Armonía y proporción con prótesis de última generación.',
-      seoTitle: 'Aumento de pecho en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Aumento mamario con resultados naturales. Valoración precisa de tamaño y forma.',
-      content: `Plan individualizado del tamaño y proyección según anatomía y objetivos. Implantes de alta seguridad, preferencia por plano subfascial o dual plane. Incisión en surco submamario. Recuperación progresiva en 1-2 semanas.`
-    },
-    en: {
-      title: 'Breast augmentation',
-      description: 'Harmony and proportion using state‑of‑the‑art implants.',
-      seoTitle: 'Breast augmentation in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Natural breast augmentation with precise sizing and planning.',
-      content: `Personalised planning of volume and projection. High-safety implants, subfascial or dual plane. Submammary incision. Recovery 1–2 weeks.`
-    }
-  },
-  'lipoescultura': {
-    es: {
-      title: 'Lipoescultura (Lipo HD)',
-      description: 'Definición corporal con alta precisión y contorno atlético.',
-      seoTitle: 'Lipoescultura y Lipo HD en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Lipoescultura de alta definición para mejorar contorno y marcación muscular.',
-      content: `Remodelado 360º con aspiración asistida y marcación selectiva (Lipo HD) cuando está indicado. Faja compresiva 4-6 semanas. Retorno a actividad progresivo desde la 2ª semana.`
-    },
-    en: {
-      title: 'Liposculpture (HD Lipo)',
-      description: 'High‑definition body contouring for athletic lines.',
-      seoTitle: 'Liposculpture & HD Lipo in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'High‑definition liposculpture to enhance contour and muscular definition.',
-      content: `360º reshaping with assisted suction and selective definition (HD) when indicated. Compression garment 4–6 weeks.`
-    }
+    title: 'Aumento mamario',
+    description: 'Armonía y proporción con implantes de última generación.',
+    seoTitle: 'Aumento de pecho en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Aumento mamario con planificación precisa y resultado natural.',
+    content: [
+      `Planificamos el volumen y la proyección según tu anatomía y objetivos, explicando opciones de tipo de implante, plano (subfascial o dual plane) y cicatriz (habitualmente en el surco). El objetivo es un pecho natural, cómodo y estable en el tiempo.`,
+      `Trabajamos con implantes de alta seguridad y medidas intraoperatorias para un ajuste fino. La recuperación inicial suele ser de 1–2 semanas, con actividad progresiva y uso de sujetador deportivo.`
+    ]
   },
   'mastopexia': {
-    es: {
-      title: 'Mastopexia (con y sin prótesis)',
-      description: 'Eleva y redefine el pecho con cicatrices discretas.',
-      seoTitle: 'Mastopexia en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Mastopexia con o sin implantes, según necesidad de volumen.',
-      content: `Corrige la ptosis mamaria. Técnicas en I corta o T invertida según flacidez. Con implante cuando se precisa volumen extra; sin implante si prioriza tejido propio. Sujetador deportivo 6 semanas.`
-    },
-    en: {
-      title: 'Mastopexy (with/without implants)',
-      description: 'Lift and reshape the breast with discreet scarring.',
-      seoTitle: 'Mastopexy in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Mastopexy tailored to lift and volume needs.',
-      content: `Corrects breast ptosis. Short-scar or inverted‑T techniques depending on laxity. Implants only when additional volume is needed.`
-    }
+    title: 'Mastopexia (con y sin prótesis)',
+    description: 'Eleva y redefine el pecho con cicatrices discretas.',
+    seoTitle: 'Mastopexia en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Elevación mamaria con o sin implantes según necesidad de volumen.',
+    content: [
+      `La mastopexia corrige la caída del pecho reposicionando el complejo areola‑pezón y reestructurando el tejido mamario. Según el grado de flacidez, empleamos patrones de cicatriz corta o en T invertida, buscando siempre un contorno armónico.`,
+      `Puede combinarse con implantes si se desea más volumen o proyección. El postoperatorio requiere sujetador deportivo durante 6 semanas y seguimiento para optimizar la cicatrización.`
+    ]
   },
   'reduccion-mama': {
-    es: {
-      title: 'Reducción de mama',
-      description: 'Alivio funcional y mejora estética.',
-      seoTitle: 'Reducción mamaria en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Reducción de mama para mejorar postura, dolor cervical y bienestar.',
-      content: `Reduce el volumen y peso mamario, mejorando postura y confort. Recolocación areolar y tejido mamario. Recuperación gradual en 2-3 semanas.`
-    },
-    en: {
-      title: 'Breast reduction',
-      description: 'Functional relief with an aesthetic outcome.',
-      seoTitle: 'Breast reduction in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Breast reduction to improve posture, neck pain and wellbeing.',
-      content: `Reduces volume and weight with nipple‑areola repositioning. Gradual recovery in 2–3 weeks.`
-    }
+    title: 'Reducción de mama',
+    description: 'Alivio funcional y mejora estética.',
+    seoTitle: 'Reducción de mama en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Cirugía para reducir volumen, mejorar postura y bienestar.',
+    content: [
+      `Indicada para aliviar molestias cervicales o dorsales, irritación cutánea y limitaciones deportivas. Se reduce el volumen y se reposiciona la areola para recuperar proporción y comodidad.`,
+      `La recuperación inicial suele ser de 2–3 semanas. Ofrecemos pautas individualizadas para el control del dolor, el cuidado de las cicatrices y la vuelta progresiva a la actividad.`
+    ]
   },
   'ginecomastia': {
-    es: {
-      title: 'Ginecomastia',
-      description: 'Reducción mamaria masculina con cicatrices mínimas.',
-      seoTitle: 'Ginecomastia en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Tratamiento quirúrgico de la ginecomastia con resultados naturales.',
-      content: `Combinación de liposucción y resección glandular a través de incisiones pequeñas en el borde areolar. Faja torácica 4 semanas.`
-    },
-    en: {
-      title: 'Gynecomastia surgery',
-      description: 'Male chest reduction with minimal scarring.',
-      seoTitle: 'Gynecomastia surgery in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Surgical treatment of gynecomastia with natural outcomes.',
-      content: `Combination of liposuction and gland excision via small periareolar incisions. Compression vest 4 weeks.`
-    }
+    title: 'Ginecomastia',
+    description: 'Reducción mamaria masculina con cicatrices mínimas.',
+    seoTitle: 'Ginecomastia en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Tratamiento quirúrgico con resultados naturales y discretos.',
+    content: [
+      `Combinamos liposucción para el componente graso y resección glandular a través de pequeñas incisiones periareolares. Buscamos un tórax más plano y definido preservando la naturalidad.`,
+      `El uso de una prenda compresiva durante 4 semanas ayuda a controlar la inflamación y mejorar la adaptación de los tejidos. La reincorporación es progresiva en 1–2 semanas.`
+    ]
+  },
+  'lipoescultura': {
+    title: 'Lipoescultura (Lipo HD)',
+    description: 'Definición corporal con alta precisión y contorno atlético.',
+    seoTitle: 'Lipoescultura y Lipo HD en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Remodelado 360º con marcación selectiva cuando está indicado.',
+    content: [
+      `La lipoescultura remodela el contorno mediante aspiración asistida y, en casos seleccionados, marcación de líneas musculares (Lipo HD) para un aspecto atlético. Personalizamos el abordaje según la calidad de piel y los objetivos.`,
+      `Indicamos faja compresiva entre 4 y 6 semanas y drenaje linfático cuando procede. El retorno a la actividad es gradual desde la segunda semana.`
+    ]
   },
   'lifting-facial': {
-    es: {
-      title: 'Lifting facial',
-      description: 'Rejuvenecimiento y definición del óvalo facial.',
-      seoTitle: 'Lifting facial en Granada y Málaga · Clínica Dr. Asenjo',
-      seoDesc: 'Lifting cervicofacial con enfoque en SMAS y cuello.',
-      content: `Tensado del SMAS y manejo cervical para mejorar flacidez y papada. Incisiones ocultas alrededor de oreja. Recuperación social en 2-3 semanas.`
-    },
-    en: {
-      title: 'Facelift',
-      description: 'Rejuvenation with improved jawline and neck contour.',
-      seoTitle: 'Facelift in Granada & Málaga · Dr. Asenjo Clinic',
-      seoDesc: 'Neck‑face lift focusing on SMAS and neck definition.',
-      content: `SMAS tightening and neck work to address laxity. Incisions concealed around the ear. Social downtime 2–3 weeks.`
-    }
+    title: 'Lifting facial',
+    description: 'Rejuvenecimiento y definición del óvalo facial y cuello.',
+    seoTitle: 'Lifting facial en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Lifting cervicofacial con trabajo en el SMAS y el cuello.',
+    content: [
+      `Actuamos sobre el plano profundo (SMAS) para tensar y recolocar, mejorando la flacidez de mejillas, mandíbula y cuello. Las incisiones se esconden alrededor de la oreja para mantener un aspecto natural.`,
+      `Combinamos, si es necesario, liposucción submentoniana o tratamiento del platisma. La recuperación social suele situarse entre 2 y 3 semanas.`
+    ]
+  },
+  'lifting-cejas': {
+    title: 'Lifting de cejas',
+    description: 'Eleva la cola de la ceja y abre la mirada con cicatrices mínimas.',
+    seoTitle: 'Lifting de cejas en Granada y Málaga · Clínica Dr. Asenjo',
+    seoDesc: 'Elevación de ceja con abordaje endoscópico o temporal.',
+    content: [
+      `El lifting de cejas reposiciona la ceja, especialmente su porción lateral, para abrir la mirada y mejorar el tercio superior. Utilizamos abordajes endoscópicos o temporales según el caso, con cicatrices discretas ocultas en el cabello.`,
+      `Suele realizarse con anestesia local y sedación, y puede combinarse con blefaroplastia para un resultado integral. La recuperación social es rápida, en torno a una semana.`
+    ]
   },
 }
 
 // --- Legal pages ---
 const LEGAL = {
   es: {
-    privacidad: {
-      title: "Política de Privacidad",
-      content: `Responsable: Clínica Dr. Asenjo. Finalidad: gestión de consultas y citas. Legitimación: consentimiento del interesado. Destinatarios: no se ceden datos salvo obligación legal o prestación de servicios (hosting, analítica). Derechos: acceso, rectificación, supresión y otros en info@drasenjo.com. Más info en esta política.`
-    },
-    cookies: {
-      title: "Política de Cookies",
-      content: `Usamos cookies técnicas necesarias y, si lo autorizas, analíticas para medir el uso del sitio. Puedes configurar tu consentimiento en cualquier momento. Las cookies analíticas no se activarán sin tu permiso.`
-    },
-    aviso: {
-      title: "Aviso Legal",
-      content: `Este sitio es titularidad de Clínica Dr. Asenjo. El acceso implica la aceptación de las condiciones de uso aquí expuestas. Queda prohibida la reproducción no autorizada de contenidos.`
-    }
-  },
-  en: {
-    privacidad: {
-      title: "Privacy Policy",
-      content: `Controller: Clínica Dr. Asenjo. Purpose: handling enquiries and appointments. Legal basis: user consent. Recipients: service providers and legal obligations. Rights: access, rectification, erasure at info@drasenjo.com.`
-    },
-    cookies: {
-      title: "Cookies Policy",
-      content: `We use strictly necessary cookies and, if you consent, analytics cookies to understand usage. You can change your preferences at any time.`
-    },
-    aviso: {
-      title: "Legal Notice",
-      content: `This website is owned by Clínica Dr. Asenjo. Access implies acceptance of these terms. Unauthorised reproduction of content is prohibited.`
-    }
+    privacidad: { title: "Política de Privacidad", content: `Responsable: Clínica Dr. Asenjo. Finalidad: gestión de consultas y citas. Legitimación: consentimiento. Destinatarios: prestadores de servicio y obligaciones legales. Derechos: acceso, rectificación, supresión y otros en info@drasenjo.com.` },
+    cookies: { title: "Política de Cookies", content: `Usamos cookies técnicas necesarias y, si lo autorizas, analíticas para medir el uso del sitio. Puedes configurar tu consentimiento en cualquier momento.` },
+    aviso: { title: "Aviso Legal", content: `Este sitio es titularidad de Clínica Dr. Asenjo. El acceso implica la aceptación de las condiciones de uso. Queda prohibida la reproducción no autorizada de contenidos.` }
   }
 }
 
 // --- Simple hash router ---
+
 function useHashRoute() {
   const [hash, setHash] = React.useState(window.location.hash || "#/");
   React.useEffect(() => {
@@ -314,37 +227,110 @@ function setSEO(title, description) {
   }
 }
 
-function ProcedurePage({ slug, lang, onBack }) {
-  const t = PROCEDURES[slug]?.[lang] || PROCEDURES[slug]?.es;
-  React.useEffect(() => {
-    if (t) setSEO(t.seoTitle, t.seoDesc);
-  }, [slug, lang]);
+function ProcedurePage({ slug, onBack }) {
+  const t = PROCEDURES[slug];
+  React.useEffect(() => { if (t) setSEO(t.seoTitle, t.seoDesc); }, [slug]);
   if (!t) return <div className="max-w-3xl mx-auto px-4 py-16">Procedimiento no encontrado.</div>;
+  const jsonProc = {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": t.title,
+    "description": t.seoDesc || t.description,
+    "howPerformed": t.content.join(" "),
+    "url": "https://www.drasenjo.com/#/proc/" + slug,
+    "medicalSpecialty": "PlasticSurgery",
+    "procedureType": "SurgicalProcedure"
+  };
+  const jsonCrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.drasenjo.com/"},
+      {"@type":"ListItem","position":2,"name":"Tratamientos","item":"https://www.drasenjo.com/#tratamientos"},
+      {"@type":"ListItem","position":3,"name": t.title, "item":"https://www.drasenjo.com/#/proc/" + slug}
+    ]
+  };
   return (
     <section className="max-w-3xl mx-auto px-4 py-16">
-      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← {TEXTS[lang].back}</button>
+      {/* JSON-LD */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonProc)}} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(jsonCrumbs)}} />
+
+      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← Volver</button>
       <h1 className="mt-4 text-3xl font-semibold tracking-tight">{t.title}</h1>
       <p className="mt-3 text-neutral-700">{t.description}</p>
       <div className="mt-6 prose prose-neutral max-w-none">
-        <p>{t.content}</p>
-        <h3>Proceso y recuperación</h3>
-        <ul>
-          <li>Valoración personalizada y expectativas realistas.</li>
-          <li>Técnicas modernas para un resultado natural.</li>
-          <li>Seguimiento estrecho y contacto directo con el equipo.</li>
-        </ul>
+        {t.content.map((p, i) => <p key={i}>{p}</p>)}
       </div>
       <div className="mt-8">
         <Button className="rounded-2xl h-11 px-6 bg-[#0b1f3a] text-white hover:bg-[#0d274e]" onClick={() => document.getElementById("contacto")?.scrollIntoView({behavior:'smooth'})}>
-          <Calendar className="mr-2 h-4 w-4"/> {TEXTS[lang].hero_cta_primary}
+          <Calendar className="mr-2 h-4 w-4"/> Solicitar valoración
+        </Button>
+      </div>
+    </section>
+  )
+}
+                 
+      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← Volver</button>
+      <h1 className="mt-4 text-3xl font-semibold tracking-tight">{t.title}</h1>
+      <p className="mt-3 text-neutral-700">{t.description}</p>
+      <div className="mt-6 prose prose-neutral max-w-none">
+        {t.content.map((p, i) => <p key={i}>{p}</p>)}
+      </div>
+      <div className="mt-8">
+        <Button className="rounded-2xl h-11 px-6 bg-[#0b1f3a] text-white hover:bg-[#0d274e]" onClick={() => document.getElementById("contacto")?.scrollIntoView({behavior:'smooth'})}>
+          <Calendar className="mr-2 h-4 w-4"/> Solicitar valoración
         </Button>
       </div>
     </section>
   )
 }
 
-function LegalPage({ page, lang, onBack }) {
+function LegalPage({ page, onBack }) {
   const map = { privacidad:'privacidad', cookies:'cookies', aviso:'aviso' }
+  const item = LEGAL.es[map[page]];
+  React.useEffect(() => { if (item) setSEO(item.title + " · Clínica Dr. Asenjo", item.title); }, [page]);
+  if (!item) return null
+  return (
+    <section className="max-w-3xl mx-auto px-4 py-16">
+      {/* JSON-LD for MedicalProcedure + Breadcrumbs */}
+      {(() => {
+        const item = t;
+        if (!item) return null;
+        const slug = slug;
+        const procSchema = {
+          "@context": "https://schema.org",
+          "@type": "MedicalProcedure",
+          "name": item.title,
+          "description": item.seoDesc || item.description,
+          "howPerformed": item.content.join(" "),
+          "url": "https://www.drasenjo.com/#/proc/" + slug,
+          "bodyLocation": "variable según el procedimiento",
+          "medicalSpecialty": "PlasticSurgery",
+          "procedureType": "SurgicalProcedure",
+          "recognizingAuthority": "España"
+        };
+        const breadcrumbs = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.drasenjo.com/"},
+            {"@type":"ListItem","position":2,"name":"Tratamientos","item":"https://www.drasenjo.com/#tratamientos"},
+            {"@type":"ListItem","position":3,"name": item.title, "item":"https://www.drasenjo.com/#/proc/" + slug}
+          ]
+        };
+        const json = JSON.stringify(procSchema);
+        const json2 = JSON.stringify(breadcrumbs);
+        return (<>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{__html: json}} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{__html: json2}} />
+
+      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← Volver</button>
+      <h1 className="mt-4 text-3xl font-semibold">{item.title}</h1>
+      <p className="mt-4 text-neutral-700 whitespace-pre-wrap">{item.content}</p>
+    </section>
+  )
+}
   const item = LEGAL[lang][map[page]] || LEGAL.es[map[page]]
   React.useEffect(() => {
     if (item) setSEO(item.title + " · Clínica Dr. Asenjo", item.title);
@@ -352,7 +338,7 @@ function LegalPage({ page, lang, onBack }) {
   if (!item) return null
   return (
     <section className="max-w-3xl mx-auto px-4 py-16">
-      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← {TEXTS[lang].back}</button>
+      <button className="text-sm text-[#0b1f3a] underline" onClick={onBack}>← Volver</button>
       <h1 className="mt-4 text-3xl font-semibold">{item.title}</h1>
       <p className="mt-4 text-neutral-700 whitespace-pre-wrap">{item.content}</p>
     </section>
@@ -360,13 +346,13 @@ function LegalPage({ page, lang, onBack }) {
 }
 
 export default function ClinicaDrAsenjo() {
-  const [lang, setLang] = React.useState(localStorage.getItem('lang') || 'es');
+  
   const hash = useHashRoute();
   React.useEffect(()=>{ localStorage.setItem('lang', lang); },[lang]);
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 antialiased">{" "}
-{(()=>{ const m = (hash.replace("#","")||"/").split("/").filter(Boolean); if(m[0]==="proc" && m[1]) return <ProcedurePage slug={m[1]} lang={lang} onBack={()=>window.history.back()} />; if(m[0]==="legal" && m[1]) return <LegalPage page={m[1]} lang={lang} onBack={()=>window.history.back()} />; return null })()}
+{(()=>{ const m = (hash.replace("#","")||"/").split("/").filter(Boolean); if(m[0]==="proc" && m[1]) return <ProcedurePage slug={m[1]} onBack={()=>window.history.back()} />; if(m[0]==="legal" && m[1]) return <LegalPage page={m[1]} onBack={()=>window.history.back()} />; return null })()}
 
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-neutral-200">
@@ -374,16 +360,16 @@ export default function ClinicaDrAsenjo() {
           <div className="h-16 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-6 w-6 rounded-full bg-[#0b1f3a]" aria-hidden />
-              <span className="font-semibold tracking-tight">Clínica Dr. Asenjo</span><button className="ml-3 text-xl" aria-label="language" onClick={()=>setLang(lang==="es"?"en":"es")}>{lang==="es"?"🇬🇧":"🇪🇸"}</button>
+              <span className="font-semibold tracking-tight">Clínica Dr. Asenjo</span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-sm">
-              <a href="#tratamientos" className="hover:opacity-70">{TEXTS[lang].nav_tratamientos}</a>
+              <a href="#tratamientos" className="hover:opacity-70">Tratamientos</a>
               <a href="#resultados" className="hover:opacity-70">Resultados</a>
-              <a href="#equipo" className="hover:opacity-70">{TEXTS[lang].nav_equipo}</a>
-              <a href="#contacto" className="hover:opacity-70">{TEXTS[lang].nav_contacto}</a>
+              <a href="#equipo" className="hover:opacity-70">Equipo</a>
+              <a href="#contacto" className="hover:opacity-70">Contacto</a>
             </nav>
             <div className="hidden md:flex items-center gap-3">
-              <Button className="rounded-2xl h-9 px-5 bg-[#0b1f3a] text-white hover:bg-[#0d274e]" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>{TEXTS[lang].reserve_online}</Button>
+              <Button className="rounded-2xl h-9 px-5 bg-[#0b1f3a] text-white hover:bg-[#0d274e]" onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>Reserva online</Button>
             </div>
           </div>
         </div>
@@ -403,7 +389,7 @@ export default function ClinicaDrAsenjo() {
               </motion.p>
               <motion.div variants={fadeIn} className="mt-8 flex flex-wrap items-center gap-3">
                 <Button className="rounded-2xl h-11 px-6 bg-[#0b1f3a] text-white hover:bg-[#0d274e]">Reservar en Clínica Dr. Asenjo <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                <Button className="rounded-2xl h-11 px-6 text-[#0b1f3a] hover:bg-[#0b1f3a]/5" variant="ghost" onClick={() => document.getElementById("tratamientos")?.scrollIntoView({ behavior: "smooth" })}>{TEXTS[lang].hero_cta_secondary}</Button>
+                <Button className="rounded-2xl h-11 px-6 text-[#0b1f3a] hover:bg-[#0b1f3a]/5" variant="ghost" onClick={() => document.getElementById("tratamientos")?.scrollIntoView({ behavior: "smooth" })}>Explorar tratamientos</Button>
               </motion.div>
               <motion.div variants={fadeIn} className="mt-8 flex items-center gap-6 text-sm text-neutral-500">
                 <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Seguridad certificada</div>
@@ -426,13 +412,14 @@ export default function ClinicaDrAsenjo() {
       <section id="tratamientos" className="py-14 border-t border-neutral-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="mb-8 flex items-end justify-between">
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{TEXTS[lang].nav_tratamientos}</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">Tratamientos</h2>
             <a href="#" className="text-sm text-neutral-500 hover:text-neutral-700">Ver todos</a>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: 'Rinoplastia', description: 'Respira mejor, luce natural.', icon: Sparkles },
-              { title: 'Blefaroplastia', description: 'Mirada fresca y luminosa.', icon: Sparkles },
+              { title: 'Blefaroplastia (Foxy eyes)', description: 'Mirada fresca y luminosa.', icon: Sparkles },
+              { title: 'Lifting de cejas', description: 'Eleva la cola de la ceja y abre la mirada.', icon: Sparkles },
               { title: 'Aumento mamario', description: 'Armonía y proporción.', icon: Sparkles },
 { title: 'Mastopexia (con y sin prótesis)', description: 'Eleva y corrige la caída del pecho.', icon: Sparkles },
 { title: 'Reducción de mama', description: 'Alivio funcional y mejora estética.', icon: Sparkles },
@@ -446,7 +433,7 @@ export default function ClinicaDrAsenjo() {
                   <h3 className="mt-4 text-lg font-medium">{f.title}</h3>
                   <p className="mt-2 text-sm text-neutral-600">{f.description}</p>
                   <div className="mt-4">
-                    <Button variant="ghost" className="rounded-xl h-9 px-4 text-[#0b1f3a] hover:bg-[#0b1f3a]/5">{TEXTS[lang].more_info} <ArrowRight className="ml-1 h-4 w-4" /></Button>
+                    <Button variant="ghost" className="rounded-xl h-9 px-4 text-[#0b1f3a] hover:bg-[#0b1f3a]/5">Más información <ArrowRight className="ml-1 h-4 w-4" /></Button>
                   </div>
                 </CardContent>
               </Card>
@@ -507,15 +494,15 @@ export default function ClinicaDrAsenjo() {
             <div>
               <div className="flex items-center gap-3">
                 <div className="h-6 w-6 rounded-full bg-[#0b1f3a]" aria-hidden />
-                <span className="font-semibold tracking-tight">Clínica Dr. Asenjo</span><button className="ml-3 text-xl" aria-label="language" onClick={()=>setLang(lang==="es"?"en":"es")}>{lang==="es"?"🇬🇧":"🇪🇸"}</button>
+                <span className="font-semibold tracking-tight">Clínica Dr. Asenjo</span>
               </div>
               <p className="mt-3 text-neutral-500 max-w-xs">Clínica Dr. Asenjo · Granada · Málaga. Cirugía y medicina estética con estándares internacionales.</p>
             </div>
             <div>
               <div className="font-medium mb-3">Clínica</div>
               <ul className="space-y-2 text-neutral-600">
-                <li><a className="hover:text-neutral-900" href="#equipo">{TEXTS[lang].nav_equipo}</a></li>
-                <li><a className="hover:text-neutral-900" href="#tratamientos">{TEXTS[lang].nav_tratamientos}</a></li>
+                <li><a className="hover:text-neutral-900" href="#equipo">Equipo</a></li>
+                <li><a className="hover:text-neutral-900" href="#tratamientos">Tratamientos</a></li>
                 <li><a className="hover:text-neutral-900" href="#resultados">Resultados</a></li>
               </ul>
             </div>
@@ -528,7 +515,7 @@ export default function ClinicaDrAsenjo() {
               </ul>
             </div>
             <div>
-              <div className="font-medium mb-3">{TEXTS[lang].nav_contacto}</div>
+              <div className="font-medium mb-3">Contacto</div>
               <ul className="space-y-2 text-neutral-600">
                 <li>Granada · Málaga</li>
                 <li><a href="mailto:info@drasenjo.com">info@drasenjo.com</a></li>
@@ -538,6 +525,19 @@ export default function ClinicaDrAsenjo() {
           <div className="text-xs text-neutral-400">© {new Date().getFullYear()} Clínica Dr. Asenjo. Todos los derechos reservados.</div>
         </div>
       </footer>
+
+{/* Cookie banner */}
+<div id="cookie-banner" className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 z-50 max-w-lg rounded-2xl border border-neutral-200 bg-white/95 backdrop-blur p-4 shadow">
+  <p className="text-sm text-neutral-700">
+    Usamos cookies técnicas y, si aceptas, analíticas (Plausible) para entender el uso de la web.
+  </p>
+  <div className="mt-3 flex gap-2">
+    <Button className="rounded-xl h-9 px-4 bg-[#0b1f3a] text-white hover:bg-[#0d274e]" onClick={() => window.__acceptAnalytics?.()}>Aceptar</Button>
+    <Button variant="ghost" className="rounded-xl h-9 px-4" onClick={() => window.__rejectAnalytics?.()}>Rechazar</Button>
+    <a href="#/legal/cookies" className="ml-auto text-sm underline">Más info</a>
+  </div>
+</div>
+
     </div>
   )
 }
