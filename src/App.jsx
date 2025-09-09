@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, Calendar, ShieldCheck, Sparkles, Star } from 'lucide-react'
+import {ArrowRight, Calendar, ShieldCheck, Sparkles, Star, ChevronDown } from 'lucide-react'
 import { Button } from './components/ui/button'
 import { Card, CardContent } from './components/ui/card'
 
@@ -14,6 +14,22 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08 } },
 }
 
+
+// --- Dropdown data for Tratamientos ---
+const tratamientosMenu = [
+  {
+    label: "Superficial",
+    items: [
+      { label: "Toxina botulínica (Botox)", href: "#t-botox" },
+      { label: "Rellenos con ácido hialurónico", href: "#t-rellenos" },
+      { label: "Peeling químico", href: "#t-peeling" },
+      { label: "Láser fraccional", href: "#t-laser" },
+    ],
+  },
+  // Puedes añadir más categorías si quieres, por ejemplo:
+  // { label: "Corporal", items: [ { label: "Liposucción", href: "#t-lipo" }, ... ] },
+  // { label: "Facial (quirúrgico)", items: [ { label: "Blefaroplastia", href: "#t-blefaro" }, ... ] },
+];
 function FormBooking() {
   const WHATSAPP = '34600000000' // <- puedes cambiarlo cuando quieras
   const EMAIL = 'info@drasenjo.com' // <- tu email profesional
@@ -96,6 +112,8 @@ function FormBooking() {
 }
 
 export default function ClinicaDrAsenjo() {
+  const [tratamientosOpen, setTratamientosOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 antialiased">
       {/* NAVBAR */}
@@ -107,7 +125,43 @@ export default function ClinicaDrAsenjo() {
               <span className="font-semibold tracking-tight">Clínica Dr. Asenjo</span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-sm">
-              <a href="#tratamientos" className="hover:opacity-70">Tratamientos</a>
+              
+{/* TRATAMIENTOS DROPDOWN */}
+<div className="relative group" onMouseEnter={() => setTratamientosOpen(true)} onMouseLeave={() => setTratamientosOpen(false)}>
+  <button className="flex items-center gap-1 hover:opacity-70">
+    Tratamientos
+    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${tratamientosOpen ? 'rotate-180' : ''}`} />
+  </button>
+  {/* Panel */}
+  <motion.div
+    initial={{ opacity: 0, y: 6, pointerEvents: 'none' }}
+    animate={{ opacity: tratamientosOpen ? 1 : 0, y: tratamientosOpen ? 0 : 6 }}
+    transition={{ duration: 0.18, ease: 'easeOut' }}
+    className="absolute left-1/2 -translate-x-1/2 mt-3 w-[620px] max-w-[90vw]"
+    style={{ pointerEvents: tratamientosOpen ? 'auto' : 'none' }}
+  >
+    <div className="rounded-2xl border border-neutral-200 bg-white/90 backdrop-blur shadow-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+        {tratamientosMenu.map((cat) => (
+          <div key={cat.label} className="px-2">
+            <div className="text-[13px] uppercase tracking-wide text-neutral-500 mb-2">{cat.label}</div>
+            <ul className="space-y-1.5">
+              {cat.items.map((it) => (
+                <li key={it.href}>
+                  <a href={it.href} className="flex items-center justify-between rounded-xl px-3 py-2 hover:bg-neutral-100 transition">
+                    <span className="text-sm">{it.label}</span>
+                    <ArrowRight className="h-4 w-4 opacity-60 group-hover:opacity-100" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+</div>
+
               <a href="#resultados" className="hover:opacity-70">Resultados</a>
               <a href="#equipo" className="hover:opacity-70">Equipo</a>
               <a href="#contacto" className="hover:opacity-70">Contacto</a>
@@ -181,6 +235,14 @@ export default function ClinicaDrAsenjo() {
           </div>
         </div>
       </section>
+      {/* SUB-SECCIONES TRATAMIENTOS (anclas para abrir al hacer clic) */}
+      <section className="py-8" aria-hidden="true">
+        <div id="t-botox" className="scroll-mt-24"></div>
+        <div id="t-rellenos" className="scroll-mt-24"></div>
+        <div id="t-peeling" className="scroll-mt-24"></div>
+        <div id="t-laser" className="scroll-mt-24"></div>
+      </section>
+
 
       {/* TEAM */}
       <section id="equipo" className="py-16 border-t border-neutral-200">
