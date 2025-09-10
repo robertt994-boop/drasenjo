@@ -1,0 +1,19 @@
+{
+  "name": "Clínica Dr. Asenjo",
+  "short_name": "Dr. Asenjo",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32 64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0b1f3a",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
